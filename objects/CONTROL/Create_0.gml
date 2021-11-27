@@ -65,6 +65,27 @@ add_vector_quad = function(_x, _y){
 	pseudoang_quad = cos(degtorad(ang_quad));
 }
 
+ang_quad_pseudo = 0;
+ang_quad_diff = 0;
+ang_quad_diff_cos = 0;
+add_vector_diff = function(_x, _y){
+	var _vec2 = [_x, _y];
+	ds_list_add(points, _vec2);
+	ds_list_add(vectors, [mid_room_x - _x, mid_room_y - _y]);
+	
+	if(ds_list_size(vectors) > 1){
+		program_state = PROGRAM_STATE.CALC;
+		var _dir1 = point_direction(mid_room_x, mid_room_y, points[| 0][0], points[| 0][1]);
+		var _dir2 = point_direction(mid_room_x, mid_room_y, points[| 1][0], points[| 1][1]);
+		var _diff = angle_difference(_dir1, _dir2);
+		ang_quad_diff = _diff;
+		ang_quad_diff_cos = cos(degtorad(_diff));
+		ang_quad_pseudo = 1 - ang_quad_diff_cos;
+	}
+	
+}
+
+
 vector_length = function(a, b){
 	return sqrt(power(a, 2) + power(b, 2));
 }

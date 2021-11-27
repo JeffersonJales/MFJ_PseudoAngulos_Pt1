@@ -4,6 +4,6 @@ if(keyboard_check_pressed(vk_space))
 
 if(program_state == PROGRAM_STATE.GET_VECTORS){
 	if(mouse_check_button_pressed(mb_left)){
-		add_vector_quad(mouse_x, mouse_y);	
+		add_vector_diff(mouse_x, mouse_y);	
 	}
 }

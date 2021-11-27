@@ -12,10 +12,8 @@ mid_room_y = room_height / 2;
 
 arrow_size = 20;
 
-pseudo_ang_dot = 0;
-ang_dot_cos = 0;
-ang_dot = 0;
 
+ang_dot = 0;
 ang_cross = 0;
 
 add_vector = function(_x, _y){
@@ -33,12 +31,10 @@ add_vector = function(_x, _y){
 		/// Calculando o angulo via produto escalar
 		var _dot = dot_product(vectors[| 0][0], vectors[| 0][1], vectors[| 1][0], vectors[| 1][1]);
 		ang_dot = _dot / (_len_a * _len_b); // resultado do cosseno
-		ang_dot_cos = ang_dot;
-		pseudo_ang_dot = 1 - ang_dot;	
-		
+	
 		ang_dot = arccos(ang_dot);					// resultado para radianos
 		ang_dot = radtodeg(ang_dot);				// radianos para angulo
-
+		
 		
 		/// Calculando o angulo via produto vetorial
 		var _cross = vectors[| 0][0] * vectors[| 1][1] - vectors[| 0][1] * vectors[| 1][0];
@@ -46,23 +42,6 @@ add_vector = function(_x, _y){
 		ang_cross = arcsin(ang_cross);
 		ang_cross = radtodeg(ang_cross);
 	}
-}
-
-
-/// Tecnica do quadrado
-quadrant = 0;
-pseudoang_quad = 0;
-ang_quad = 0;
-quad_size = 300;
-add_vector_quad = function(_x, _y){
-	var _vec2 = [_x, _y];
-	ds_list_add(points, _vec2);
-	ds_list_add(vectors, [mid_room_x - _x, mid_room_y - _y]);
-	program_state = PROGRAM_STATE.CALC;
-
-	ang_quad = point_direction(mid_room_x, mid_room_y, _x, _y);
-	quadrant = ang_quad div 45;
-	pseudoang_quad = cos(degtorad(ang_quad));
 }
 
 vector_length = function(a, b){

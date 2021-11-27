@@ -7,13 +7,9 @@ draw_circle(mid_room_x, mid_room_y, 5, false);
 
 if(program_state == PROGRAM_STATE.GET_VECTORS)
 	draw_arrow(mid_room_x, mid_room_y, mouse_x, mouse_y, arrow_size);
-
-draw_rectangle(mid_room_x - quad_size, mid_room_y - quad_size,
-							 mid_room_x + quad_size, mid_room_y + quad_size, true);
-
+	
 var point_arr;
 for(var i = 0; i < ds_list_size(points); i++){
 	point_arr = points[| i];
 	draw_arrow(mid_room_x, mid_room_y, point_arr[0], point_arr[1], arrow_size);
 }
-

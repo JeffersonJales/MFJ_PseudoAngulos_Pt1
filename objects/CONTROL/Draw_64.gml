@@ -13,6 +13,10 @@ if(program_state == PROGRAM_STATE.CALC){
 	draw_text(20, 60, "RESULTADO");
 	draw_text(20, 80, "Angulo via produto escalar: " + string(ang_dot));
 	draw_text(20, 100, "Angulo via produto vetorial: " + string(ang_cross));
+	
+	draw_text(20, 140, "Angulo do cosseno: " + string(ang_dot_cos));
+	draw_text(20, 160, "Pseudo angulo do cosseno: " + string(pseudo_ang_dot));
+	
 	draw_set_color(c_white);
 }
 

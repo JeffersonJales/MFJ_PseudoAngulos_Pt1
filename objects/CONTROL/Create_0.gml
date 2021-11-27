@@ -12,7 +12,10 @@ mid_room_y = room_height / 2;
 
 arrow_size = 20;
 
+pseudo_ang_dot = 0;
+ang_dot_cos = 0;
 ang_dot = 0;
+
 ang_cross = 0;
 
 add_vector = function(_x, _y){
@@ -30,15 +33,18 @@ add_vector = function(_x, _y){
 		/// Calculando o angulo via produto escalar
 		var _dot = dot_product(vectors[| 0][0], vectors[| 0][1], vectors[| 1][0], vectors[| 1][1]);
 		ang_dot = _dot / (_len_a * _len_b); // resultado do cosseno
+		ang_dot_cos = ang_dot;
+		pseudo_ang_dot = 1 - ang_dot;	
+		
 		ang_dot = arccos(ang_dot);					// resultado para radianos
 		ang_dot = radtodeg(ang_dot);				// radianos para angulo
+
 		
 		/// Calculando o angulo via produto vetorial
 		var _cross = vectors[| 0][0] * vectors[| 1][1] - vectors[| 0][1] * vectors[| 1][0];
 		ang_cross = _cross / (_len_a * _len_b);
 		ang_cross = arcsin(ang_cross);
 		ang_cross = radtodeg(ang_cross);
-	
 	}
 }
 
